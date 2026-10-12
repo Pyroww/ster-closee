@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 1000" role="img" aria-label="Ilustração de peça vintage polka">
+ <defs>
+ <linearGradient id="back" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f5e5ee"/><stop offset="1" stop-color="#ecbdd4"/></linearGradient>
+ <linearGradient id="fabric" x1="0" x2="1" y1="0" y2=".8"><stop stop-color="#6c596e"/><stop offset=".5" stop-color="#ecbdd4"/><stop offset="1" stop-color="#6c596e"/></linearGradient>
+ <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.5" fill="#fff" opacity=".4"/></pattern>
+ <filter id="shadow" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="18"/></filter>
+ </defs>
+ <rect width="850" height="1000" fill="url(#back)"/><rect width="850" height="1000" fill="url(#dots)"/>
+ <circle cx="720" cy="155" r="190" fill="#fff" opacity=".22"/><circle cx="93" cy="810" r="195" fill="#fff" opacity=".15"/>
+ <path d="M70 138l10-26 11 26 25 10-25 11-11 25-10-25-25-11Z" fill="#fff9ff" opacity=".85"/><text x="675" y="745" fill="#fff" opacity=".75" font-size="115" font-family="sans-serif">✳</text>
+ <g transform="translate(120 122)"><ellipse cx="305" cy="658" rx="220" ry="29" fill="#785c79" opacity=".17" filter="url(#shadow)"/><path d="M221 134L273 111Q302 165 336 113L389 134L446 224L414 271L382 239L376 355L505 594Q303 658 91 592L218 352L214 236L182 273L153 226Z" fill="url(#fabric)" stroke="#53485b" stroke-width="7" stroke-linejoin="round"/><path d="M272 120Q304 196 337 121" stroke="#ecd4e0" stroke-width="9" fill="none"/><path d="M215 356Q301 386 382 356" stroke="#e5bfd2" stroke-width="8" fill="none"/><g fill="#f8dce8" opacity=".9"><circle cx="250" cy="265" r="10"/><circle cx="346" cy="269" r="10"/><circle cx="298" cy="320" r="10"/><circle cx="230" cy="417" r="10"/><circle cx="309" cy="410" r="10"/><circle cx="390" cy="417" r="10"/><circle cx="195" cy="521" r="10"/><circle cx="269" cy="536" r="10"/><circle cx="337" cy="534" r="10"/><circle cx="416" cy="527" r="10"/><circle cx="247" cy="594" r="10"/><circle cx="368" cy="590" r="10"/></g></g>
+ <rect x="45" y="914" width="760" height="1" fill="#fff" opacity=".65"/>
+ <text x="65" y="947" font-size="18" font-weight="bold" fill="#866277" font-family="Arial,sans-serif" letter-spacing="4">MIMO ARCHIVE</text>
+ <text x="786" y="947" text-anchor="end" font-size="17" font-weight="bold" fill="#987b8a" font-family="Arial,sans-serif">MC-012  ♡</text>
+ </svg>

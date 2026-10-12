@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f8e9ee" />
+  <meta name="description" content="Painel de gestão do brechó Ster Closee." />
+  <title>Ster Closee / Studio — Administração</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/admin/style.css" />
+  <script type="module" src="/admin/app.js"></script>
+</head>
+<body>
+  <div class="top-ribbon"><span>STER CLOSEE — THE CLOSET STUDIO</span><span>BACKSTAGE / ADMIN ACCESS</span></div>
+  <div id="setup-screen" class="gate-screen" hidden>
+    <div class="gate-card">
+      <div class="gate-issue">STER CLOSEE / SETUP 001</div>
+      <p class="eyebrow">PREPARANDO SEU CLOSET</p>
+      <h1>O studio está quase <em>pronto.</em></h1>
+      <p>Para publicar peças reais, configure o Supabase, execute o arquivo SQL e crie o primeiro usuário administrador.</p>
+      <ol><li>Crie um projeto no Supabase.</li><li>Execute <code>supabase/schema.sql</code> no SQL Editor.</li><li>Preencha <code>js/config.js</code> e autorize seu usuário.</li></ol>
+      <button class="button primary" id="preview-admin" type="button">Explorar prévia do painel ↗</button> <a class="button outline" href="/">Ver vitrine ↗</a>
+      <p class="gate-hint">As instruções completas estão no README.md do projeto.</p>
+    </div>
+  </div>
+  <div id="login-screen" class="gate-screen" hidden>
+    <div class="gate-card">
+      <div class="gate-issue">STER CLOSEE / PRIVATE ACCESS</div>
+      <p class="eyebrow">THE CLOSET STUDIO</p>
+      <h1>Seu espaço de <em>curadoria.</em></h1>
+      <p>Entre para publicar, editar e organizar as peças do brechó.</p>
+      <form id="login-form" class="login-form">
+        <label>E-mail <input id="login-email" type="email" autocomplete="username" placeholder="seu@email.com" required /></label>
+        <label>Senha <input id="login-password" type="password" autocomplete="current-password" placeholder="Sua senha" required /></label>
+        <button id="login-submit" class="button primary" type="submit">Entrar no studio ↗</button>
+      </form>
+      <p id="login-error" class="feedback error" role="alert" hidden></p>
+      <div class="gate-hint">Acesso exclusivo para administradores autorizados. <a href="/">Voltar à loja</a></div>
+    </div>
+  </div>
+
+  <div id="app-screen" class="workspace" hidden>
+    <aside class="sidebar">
+      <div class="side-brand"><a href="/" target="_blank" rel="noopener">ster<span>closee</span><b>.</b></a><small>THE CLOSET STUDIO / 01</small></div>
+      <nav class="side-nav" aria-label="Menu administrador"><button class="nav-link active" type="button" id="nav-products">↗ <span>Peças do closet</span></button><a class="nav-link" href="/" target="_blank" rel="noopener">↗ <span>Ver loja pública</span></a></nav>
+      <div class="side-bottom"><span>SEU ESPAÇO DE CURADORIA</span><small>De peça única em peça única, seu closet ganha vida.</small><button id="logout-desktop" type="button">Sair da conta ↗</button></div>
+    </aside>
+    <div class="workspace-main">
+      <header class="app-header"><div><span class="app-overline">STER CLOSEE / INVENTÁRIO</span><h1>Seu closet, <em>em dia.</em></h1><p>Fotografe, cadastre e publique direto do celular ou computador.</p></div><div class="header-controls"><span class="logged-email" id="logged-email"></span><button class="button outline logout-mobile" id="logout-mobile" type="button">Sair</button><button class="button primary" id="new-product" type="button">+ Nova peça</button></div></header>
+      <section class="stats" aria-label="Resumo do catálogo"><article><span>TOTAL DE PEÇAS</span><strong id="stat-total">—</strong><small>No seu inventário</small></article><article><span>PUBLICADAS</span><strong id="stat-published">—</strong><small>Visíveis na loja</small></article><article><span>DISPONÍVEIS</span><strong id="stat-available">—</strong><small>Prontas para garimpar</small></article><article><span>VENDIDAS</span><strong id="stat-sold">—</strong><small>Garimpos que encontraram um lar</small></article></section>
+      <section class="inventory"><div class="section-heading"><div><span class="eyebrow">INVENTÁRIO / 001</span><h2>Peças do <em>closet</em></h2></div><button class="button small outline" id="refresh-list" type="button">↻ Atualizar</button></div><div class="inventory-toolbar"><label class="searchbox"><span aria-hidden="true">⌕</span><input id="inventory-search" type="search" placeholder="Buscar por nome ou código..." aria-label="Buscar peça" /></label><select id="inventory-filter" aria-label="Filtrar status"><option value="all">Todas as peças</option><option value="published">Publicadas</option><option value="draft">Rascunhos</option><option value="available">Disponíveis</option><option value="reserved">Reservadas</option><option value="sold">Vendidas</option></select></div>
+      <div id="inventory-message" class="inventory-message" role="status"></div><div id="inventory-list" class="inventory-list"></div></section>
+      <footer class="workspace-footer"><span>STER CLOSEE / STUDIO</span><span>PUBLICAÇÃO EM TEMPO REAL PELO SUPABASE</span></footer>
+    </div>
+  </div>
+
+  <div class="editor-backdrop" id="editor-backdrop" hidden></div>
+  <section id="editor" class="editor" aria-label="Editor de produto" aria-modal="true" role="dialog" hidden>
+    <form id="product-form" novalidate>
+      <div class="editor-top"><div><p class="eyebrow">STER CLOSEE / NOVO GARIMPO</p><h2 id="editor-title">Cadastrar peça</h2></div><button id="close-editor" type="button" class="icon-close" aria-label="Fechar editor">×</button></div>
+      <div class="editor-content">
+        <div class="editor-note">Cada peça é única. Preencha os dados e adicione pelo menos uma fotografia para publicar.</div>
+        <fieldset class="form-section"><legend>01 / Fotos da peça</legend><p class="section-help">Até 6 imagens. A primeira será a capa na loja. Fotos são otimizadas antes do envio.</p>
+          <div id="photo-list" class="photo-list"></div>
+          <div class="photo-actions"><button id="camera-trigger" type="button" class="button outline">◉ Tirar foto</button><button id="gallery-trigger" type="button" class="button outline">+ Escolher imagens</button></div>
+          <input id="camera-input" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" capture="environment" hidden />
+          <input id="gallery-input" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple hidden />
+          <small>Formatos JPEG, PNG ou WebP; até 15 MB antes da otimização. HEIC pode não ser compatível em alguns navegadores.</small>
+        </fieldset>
+        <fieldset class="form-section"><legend>02 / Identidade da peça</legend>
+          <label class="field full">Título da peça <span>*</span><input name="name" id="field-name" required maxlength="110" placeholder="Ex.: Calça jeans flare anos 2000" /></label>
+          <label class="field full">Descrição <span>*</span><textarea name="description" id="field-description" required rows="4" maxlength="2000" placeholder="Caimento, detalhes, estilo, marcas de uso e tudo o que torna essa peça única..."></textarea></label>
+          <div class="form-grid"><label class="field">Categoria <span>*</span><select name="category" id="field-category" required></select></label><label class="field">Preço (R$) <span>*</span><input name="price" id="field-price" type="number" min="0.01" max="999999" step="0.01" inputmode="decimal" placeholder="59,90" required /></label></div>
+          <div class="form-grid"><label class="field">Tamanho <span>*</span><select name="size" id="field-size" required></select></label><label class="field">Cor predominante <span>*</span><select name="color" id="field-color" required></select></label></div>
+          <div class="form-grid"><label class="field">Estampa <span>*</span><select name="patterned" id="field-patterned"><option value="false">Lisa / sem estampa</option><option value="true">Estampada</option></select></label><label class="field">Conservação <span>*</span><select name="condition" id="field-condition"><option>Excelente estado</option><option>Ótimo estado</option><option>Bom estado</option><option>Marcas de uso</option><option>Com avarias (descritas)</option></select></label></div>
+          <div class="form-grid"><label class="field">Material / tecido <input name="material" id="field-material" maxlength="120" placeholder="Ex.: Algodão, jeans, couro" /></label><label class="field">Selo (opcional) <input name="badge" id="field-badge" maxlength="40" placeholder="Ex.: novo drop" /></label></div>
+        </fieldset>
+        <fieldset class="form-section"><legend>03 / Publicação</legend><div class="form-grid"><label class="field">Situação da peça <select name="availability" id="field-availability"><option value="available">Disponível</option><option value="reserved">Reservada</option><option value="sold">Vendida</option></select></label><label class="field">Visibilidade <select name="visibility" id="field-visibility"><option value="draft">Rascunho (oculta)</option><option value="published">Publicada na loja</option></select></label></div><p class="section-help">Rascunhos não aparecem para clientes. Peças reservadas ou vendidas podem continuar publicadas, mas sem botão de compra.</p></fieldset>
+      </div>
+      <div class="editor-footer"><p id="editor-feedback" class="feedback" role="status"></p><div class="editor-footer-buttons"><button class="button danger" type="button" id="delete-product" hidden>Excluir peça</button><button class="button outline" type="button" id="save-draft">Salvar rascunho</button><button class="button primary" type="submit" id="save-product">Publicar peça ↗</button></div></div>
+    </form>
+  </section>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

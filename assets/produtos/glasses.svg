@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 1000" role="img" aria-label="Ilustração de peça vintage glasses">
+ <defs>
+ <linearGradient id="back" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fcecf4"/><stop offset="1" stop-color="#e8b4d2"/></linearGradient>
+ <linearGradient id="fabric" x1="0" x2="1" y1="0" y2=".8"><stop stop-color="#ea91b1"/><stop offset=".5" stop-color="#e8b4d2"/><stop offset="1" stop-color="#ea91b1"/></linearGradient>
+ <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.5" fill="#fff" opacity=".4"/></pattern>
+ <filter id="shadow" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="18"/></filter>
+ </defs>
+ <rect width="850" height="1000" fill="url(#back)"/><rect width="850" height="1000" fill="url(#dots)"/>
+ <circle cx="720" cy="155" r="190" fill="#fff" opacity=".22"/><circle cx="93" cy="810" r="195" fill="#fff" opacity=".15"/>
+ <path d="M70 138l10-26 11 26 25 10-25 11-11 25-10-25-25-11Z" fill="#fff9ff" opacity=".85"/><text x="675" y="745" fill="#fff" opacity=".75" font-size="115" font-family="sans-serif">✳</text>
+ <g transform="translate(120 122)"><ellipse cx="305" cy="658" rx="220" ry="29" fill="#785c79" opacity=".17" filter="url(#shadow)"/><path d="M89 290L176 320M426 319L509 290" fill="none" stroke="#b9588b" stroke-width="19" stroke-linecap="round"/><path d="M178 308Q116 252 103 342Q100 444 214 469Q281 447 298 381Q311 330 261 313Q215 294 178 308Z" fill="#f2b0c8" fill-opacity=".65" stroke="#d26799" stroke-width="22"/><path d="M422 309Q481 256 493 347Q490 444 376 469Q308 449 294 381Q285 334 336 314Q387 294 422 309Z" fill="#f2b0c8" fill-opacity=".65" stroke="#d26799" stroke-width="22"/><path d="M276 337Q303 315 327 336" stroke="#b9588b" stroke-width="18" fill="none"/><path d="M149 346L201 331M360 330L414 349" stroke="#fff7fa" stroke-width="12" opacity=".75"/></g>
+ <rect x="45" y="914" width="760" height="1" fill="#fff" opacity=".65"/>
+ <text x="65" y="947" font-size="18" font-weight="bold" fill="#866277" font-family="Arial,sans-serif" letter-spacing="4">MIMO ARCHIVE</text>
+ <text x="786" y="947" text-anchor="end" font-size="17" font-weight="bold" fill="#987b8a" font-family="Arial,sans-serif">MC-009  ♡</text>
+ </svg>

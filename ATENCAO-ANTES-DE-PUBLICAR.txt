@@ -1,0 +1,13 @@
+STER CLOSEE — CHECKLIST PARA ENTRAR NO AR
+
+1) Crie o bucket público product-photos no Supabase.
+2) Execute supabase/schema.sql no SQL Editor de um projeto novo.
+3) Crie uma conta no Supabase Authentication > Users.
+4) Autorize o UUID da conta na tabela public.admin_users (veja README.md).
+5) Ajuste js/config.js: URL do projeto, chave PÚBLICA e telefone real do WhatsApp.
+6) Publique a pasta inteira (incluindo /admin/) na Vercel.
+7) Entre em /admin/, publique uma peça e confira-a em /.
+8) NUNCA coloque service_role, secret key ou senhas no JavaScript!
+
+Sem configuração, o catálogo exibe somente dados de demonstração.
+Com Supabase configurado, o site lê somente produtos reais publicados.
